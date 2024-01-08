@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
+    <script defer src="assets/js/script.js"></script>
+    <script src="https://kit.fontawesome.com/f0baf4ae6a.js" crossorigin="anonymous"></script>
     <title>My Planner</title>
 </head>
 
@@ -47,8 +48,13 @@
             <input name="date" type="date" id="date">
         </div>
 
+        <div class="isUrgentForm">
+            <label for="urgentCheckbox">Urgent :</label>
+            <input type="checkbox" id="isUrgent" name="urgentCheckbox">
+        </div>
+
         <div>
-            <button type="submit">+</button>
+            <button id="btnSubmit" type="submit">+</button>
         </div>
     </form>
 
@@ -56,16 +62,21 @@
         <!-- To Do -->
         <section class="StoDo">
             <h2>To Do</h2>
+                <!-- card -->
+            </div>
+
         </section>
 
         <!-- Doing -->
         <section class="Sdoing">
             <h2>Doing</h2>
+                <!-- card -->
         </section>
 
         <!-- Done -->
         <section class="Sdone">
             <h2>Done</h2>
+                <!-- card -->
         </section>
     </main>
 

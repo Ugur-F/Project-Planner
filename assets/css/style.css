@@ -1,19 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
+/*
+// code HTML d'une card
+
+<div class="card">
+
+    <div class="card__icon">
+        <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
+        <i class="fa-solid fa-highlighter"></i>
+        <i class="fa-regular fa-trash-can"></i>
+    </div>
+
+    <p class="card__name">Prepa JS</p>
+    <p class="card__desc">Terminer l'exo 3 et 4.</p>
+    <p class="card__timeBox">Created: 08/01/2024</p>
+    <p class="card__timeBox">Deadline: 17/01/2024</p>
+
+</div>
+*/
 * {
   margin: 0;
+  overflow-x: hidden;
 }
 
 body {
   background-color: #141B33;
   font-family: "Bebas Neue";
-  text-align: center;
+  height: auto;
+  padding-bottom: 1%;
 }
 
 header {
   background-color: #293045;
   color: white;
   font-size: 25px;
+  text-align: center;
   letter-spacing: 3px;
   box-shadow: 0 0 5px rgba(232, 230, 230, 0.5);
   border-bottom-left-radius: 55px;
@@ -31,6 +52,7 @@ header {
   font-size: 18px;
   border-radius: 5px;
   border: none;
+  margin-left: 30%;
 }
 
 form {
@@ -87,23 +109,52 @@ form #date {
   letter-spacing: 1.5px;
   font-size: 15px;
 }
+form .isUrgentForm {
+  background-color: #3F4558;
+  border: none;
+  width: 98.5%;
+  margin-top: 1%;
+  border-radius: 5px;
+  color: #9699A3;
+  font-family: "Kanit";
+  letter-spacing: 1.5px;
+  font-size: 15px;
+}
+form #btnSubmit {
+  background-color: white;
+  border: none;
+  width: 98.5%;
+  margin-top: 1%;
+  border-radius: 5px;
+  color: #141B33;
+  font-family: "Kanit";
+  letter-spacing: 1.5px;
+  font-size: 20px;
+}
+form #btnSubmit :hover {
+  background-color: #141B33;
+  color: white;
+}
+form #btnSubmit:hover {
+  background-color: #141B33;
+  color: white;
+}
 
 main {
-  height: 500px;
+  height: auto;
   margin-top: 1%;
   display: flex;
-  text-align: center;
   justify-content: center;
 }
 main .StoDo {
-  height: 400px;
+  height: auto;
   width: 33%;
   border-top: 3px solid white;
   display: flex;
   flex-direction: column;
 }
 main .Sdoing {
-  height: 400px;
+  height: auto;
   width: 33%;
   margin-left: 0.4%;
   margin-right: 0.4%;
@@ -112,7 +163,7 @@ main .Sdoing {
   flex-direction: column;
 }
 main .Sdone {
-  height: 400px;
+  height: auto;
   width: 33%;
   border-top: 3px solid white;
   display: flex;
@@ -122,12 +173,45 @@ main h2 {
   font-size: 30px;
   letter-spacing: 2px;
   color: white;
+  text-align: center;
 }
 
 .card {
   width: 99%;
-  height: 60px;
-  margin-top: 1%;
+  margin: 0;
+  background-color: #293045;
+  margin-top: 5%;
+  color: white;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 20px;
+  border: 1px solid #3F4558;
   margin-left: auto;
   margin-right: auto;
+}
+.card__icon {
+  margin-left: 88%;
+  padding-top: 1%;
+  padding-right: 1%;
+  text-align: end;
+  display: inline-block;
+  border-bottom: 2px solid white;
+}
+.card__name {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-top: 1%;
+  padding-left: 3%;
+}
+.card__desc {
+  font-size: 18px;
+  font-family: "Kanit";
+  padding-left: 3%;
+}
+.card__timeBox {
+  display: inline-block;
+  margin-left: 15%;
+  margin-top: 4%;
+  font-size: 16px;
+  letter-spacing: 1px;
 }/*# sourceMappingURL=style.css.map */
