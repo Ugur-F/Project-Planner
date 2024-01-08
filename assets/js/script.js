@@ -1,7 +1,7 @@
-import { format, addDays } from 'date-fns';
+//import { formatDistance, format, subDays, addDays } from 'node_modules/date-fns';
 
 class Tasks {
-    constructor(title, state, dueDate) {
+    constructor(title, description, state, dueDate, isUrgent) {
         this.id = this.getTheID();
         this.creationDate = new Date();
         this.title = title;
@@ -13,26 +13,25 @@ class Tasks {
 
     getTheID() {
         let counter;
-        let arrayTask = localStorage.tasks;
-        if (localStorage.getItem('tasks') !== null) {
-            counter = parseInt(arrayTask.length);
-        } else {
-            counter = 0;
-        }
+        let arrayTask = JSON.parse(localStorage.getItem('tasks')) || [];
+        counter = arrayTask.length;
         return counter;
     }
 }
 
 function displayTask(newTask){
     // Create HTML for task; translate to js
+    console.log(newTask);
 }
 
+let editingTask = null;
 function submitNewTask() {
     let submitBtn = document.getElementById("submitBtn");
     let taskTitle = document.getElementById("name").value;
     let taskDesc = document.getElementById("desc").value;
-    let taskState = document.getElementById("pending").value; // <=== .value to confirm
-    let taskDueDate = document.getElementById("date").value;
+    let taskState = document.getElementById("pending").selected; // <=== .selected to confirm
+    let taskDueDate = document.getElementById("dueDate").value;
+    let taskIsUrgent = document.getElementById("dueDate").value;
 
     submitBtn.addEventListener('click', (event) => {
         event.preventDefault();
@@ -57,15 +56,22 @@ function submitNewTask() {
             let newTask = new Tasks(taskTitle, taskDesc, taskState, taskDueDate, /* isUrgent*/); // <=== add input type checkbox
             saveTaskLocally(newTask);
             displayTask(newTask);
+            
         }
     })
 }
 
-let editingTask = null;
 function editTask(task) {
-    let taskText = task.querySelector(/* to confirm */).textContent; // <=== class list-element-text correspond to ...
-    document.getElementById(/* to confirm */).value = taskText; // <=== ... id input form
-    /*add all champ form */
+    let title = task.querySelector(/* to confirm */).textContent; // <=== class list-element-text correspond to ...
+    document.getElementById("name").value = taskText; // <=== ... id input form
+    let desc = task.querySelector(/* to confirm */).textContent;
+    document.getElementById("desc").value = taskText;
+    let state = task.querySelector(/* to confirm */).textContent;
+    document.getElementById("pending").value = taskText;
+    let dueDate = task.querySelector(/* to confirm */).textContent;
+    document.getElementById("dueDate").value = taskText;
+    let isUrgent = task.querySelector(/* to confirm */).textContent;
+    document.getElementById("isUrgent").checked = taskText;
 
     let btn = document.getElementById('submitBtn');
     btn.setAttribute("value", "Edit task");
@@ -98,6 +104,15 @@ function deleteTask(taskId) {
     }
 }
 
+function DistanceDueDate() {
+    let dueDateInput = document.getElementById("dueDate");
+    let dueDateValue = dueDateInput.value;
+    let dueDate = new Date(dueDateValue);
+    let formattedDueDate = format(dueDate, "MM/dd/yyyy");
+    let timeDifference = formatDistance(new Date(), dueDate, { addSuffix: true });
+    console.log("Due Date:", formattedDueDate);
+    console.log("Time Difference:", timeDifference);
+}
 
 function setupStateBtn() {
     /*
