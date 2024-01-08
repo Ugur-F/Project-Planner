@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
+* {
+  margin: 0;
+}
+
+body {
+  background-color: #141B33;
+  font-family: "Bebas Neue";
+  text-align: center;
+}
+
+header {
+  background-color: #293045;
+  color: white;
+  font-size: 25px;
+  letter-spacing: 3px;
+  box-shadow: 0 0 5px rgba(232, 230, 230, 0.5);
+  border-bottom-left-radius: 55px;
+  border-bottom-right-radius: 55px;
+}
+
+#filter {
+  background: #31374C;
+  width: 40%;
+  margin-top: 2%;
+  font-size: 16px;
+  font-family: "Kanit";
+  color: white;
+  letter-spacing: 5px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+}
+
+form {
+  background-color: #293045;
+  width: 40%;
+  text-align: start;
+  border: 10px solid black;
+  border-radius: 20px;
+  margin-top: 0.5%;
+  margin-right: auto;
+  margin-left: auto;
+  border: 10px solid #293045;
+}
+form #name {
+  background-color: #3F4558;
+  border: none;
+  width: 98%;
+  border-radius: 5px;
+  font-family: "Kanit";
+  color: white;
+  letter-spacing: 1.5px;
+  font-size: 15px;
+}
+form #desc {
+  background-color: #3F4558;
+  border: none;
+  width: 98%;
+  margin-top: 1%;
+  border-radius: 5px;
+  font-family: "Kanit";
+  color: white;
+  letter-spacing: 1.5px;
+  font-size: 15px;
+}
+form #pending {
+  background-color: #3F4558;
+  border: none;
+  width: 98.5%;
+  margin-top: 1%;
+  border-radius: 5px;
+  color: #9699A3;
+  font-family: "Kanit";
+  letter-spacing: 1.5px;
+  font-size: 15px;
+}
+form #date {
+  background-color: #3F4558;
+  border: none;
+  width: 98.5%;
+  margin-top: 1%;
+  border-radius: 5px;
+  color: #9699A3;
+  font-family: "Kanit";
+  letter-spacing: 1.5px;
+  font-size: 15px;
+}/*# sourceMappingURL=style.css.map */
