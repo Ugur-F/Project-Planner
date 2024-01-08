@@ -21,7 +21,6 @@ class Tasks {
 
 function displayTask(newTask){
     // Create HTML for task; translate to js
-    console.log(newTask);
 }
 
 let editingTask = null;
@@ -36,29 +35,30 @@ function submitNewTask() {
     submitBtn.addEventListener('click', (event) => {
         event.preventDefault();
 
-        if (editingTask) {
-            let tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
-            let editedTask = tasksArray.find(task => task.id === parseInt(editingTask.id.split('_')[1]));
+        // if (editingTask) {
+        //     let tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
+        //     let editedTask = tasksArray.find(task => task.id === parseInt(editingTask.id.split('_')[1]));
 
-            if (editedTask) {
-                editedTask.title = taskTitle;
-                editedTask.description = taskDesc;
-                editedTask.state = taskState;
-                editedTask.dueDate = taskDueDate;
-                /*add urgent checkbox*/
+        //     if (editedTask) {
+        //         editedTask.title = taskTitle;
+        //         editedTask.description = taskDesc;
+        //         editedTask.state = taskState;
+        //         editedTask.dueDate = taskDueDate;
+        //         /*add urgent checkbox*/
 
-                localStorage.setItem('tasks', JSON.stringify(tasksArray));
-            }
+        //         localStorage.setItem('tasks', JSON.stringify(tasksArray));
+        //     }
 
-            editingTask = null;
-            location.reload();
-        } else {
-            let newTask = new Tasks(taskTitle, taskDesc, taskState, taskDueDate, /* isUrgent*/); // <=== add input type checkbox
-            saveTaskLocally(newTask);
-            displayTask(newTask);
+        //     editingTask = null;
+        //     location.reload();
+        // } else {
+            let newTask = new Tasks(taskTitle, taskDesc, taskState, taskDueDate, isUrgent);
+            console.log(newTask);
+            //saveTaskLocally(newTask);
+            // displayTask(newTask);
             
         }
-    })
+    /*}*/)
 }
 
 function editTask(task) {
@@ -104,15 +104,15 @@ function deleteTask(taskId) {
     }
 }
 
-function DistanceDueDate() {
-    let dueDateInput = document.getElementById("dueDate");
-    let dueDateValue = dueDateInput.value;
-    let dueDate = new Date(dueDateValue);
-    let formattedDueDate = format(dueDate, "MM/dd/yyyy");
-    let timeDifference = formatDistance(new Date(), dueDate, { addSuffix: true });
-    console.log("Due Date:", formattedDueDate);
-    console.log("Time Difference:", timeDifference);
-}
+// function DistanceDueDate() {
+//     let dueDateInput = document.getElementById("dueDate");
+//     let dueDateValue = dueDateInput.value;
+//     let dueDate = new Date(dueDateValue);
+//     let formattedDueDate = format(dueDate, "MM/dd/yyyy");
+//     let timeDifference = formatDistance(new Date(), dueDate, { addSuffix: true });
+//     console.log("Due Date:", formattedDueDate);
+//     console.log("Time Difference:", timeDifference);
+// }
 
 function setupStateBtn() {
     /*
