@@ -8,12 +8,12 @@ class Tasks {
         this.description = description;
         this.state = state;
         this.dueDate = dueDate;
-        this.isUrgent = isUrgent;
+        this.isUrgent = false;
     }
 
     getTheID() {
         let counter;
-        let arrayTask = JSON.parse(localStorage.getItem('tasks')) || [];
+        let arrayTask = JSON.parse(localStorage.getItem('Tasks')) || [];
         counter = arrayTask.length;
         return counter;
     }
@@ -21,57 +21,59 @@ class Tasks {
 
 function displayTask(newTask){
     // Create HTML for task; translate to js
+    console.log(newTask);
 }
 
 let editingTask = null;
 function submitNewTask() {
-    let submitBtn = document.getElementById("submitBtn");
-    let taskTitle = document.getElementById("name").value;
-    let taskDesc = document.getElementById("desc").value;
-    let taskState = document.getElementById("pending").selected; // <=== .selected to confirm
-    let taskDueDate = document.getElementById("dueDate").value;
-    let taskIsUrgent = document.getElementById("dueDate").value;
+    let submitBtn = document.getElementById("btnSubmit");
+
 
     submitBtn.addEventListener('click', (event) => {
         event.preventDefault();
+        let taskTitle = document.getElementById("name").value;
+        let taskDesc = document.getElementById("desc").value;
+        let taskState = document.getElementById("pending").value; 
+        let taskDueDate = document.getElementById("dueDate").value;
+        let taskIsUrgent = document.getElementById("isUrgent").checked;
+        console.log("Je suis une variable: " + taskTitle + taskDesc + taskDueDate);
+        if (editingTask) {
+            let tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
+            let editedTask = tasksArray.find(task => task.id === parseInt(editingTask.id.split('_')[1]));
 
-        // if (editingTask) {
-        //     let tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
-        //     let editedTask = tasksArray.find(task => task.id === parseInt(editingTask.id.split('_')[1]));
+            if (editedTask) {
+                editedTask.title = taskTitle;
+                editedTask.description = taskDesc;
+                editedTask.state = taskState;
+                editedTask.dueDate = taskDueDate;
+                editedTask.isUrgent = taskIsUrgent;
 
-        //     if (editedTask) {
-        //         editedTask.title = taskTitle;
-        //         editedTask.description = taskDesc;
-        //         editedTask.state = taskState;
-        //         editedTask.dueDate = taskDueDate;
-        //         /*add urgent checkbox*/
+                localStorage.setItem('tasks', JSON.stringify(tasksArray));
+            }
 
-        //         localStorage.setItem('tasks', JSON.stringify(tasksArray));
-        //     }
-
-        //     editingTask = null;
-        //     location.reload();
-        // } else {
-            let newTask = new Tasks(taskTitle, taskDesc, taskState, taskDueDate, isUrgent);
-            console.log(newTask);
-            //saveTaskLocally(newTask);
-            // displayTask(newTask);
+            editingTask = null;
+            location.reload();
+        } else {
+            let newTask = new Tasks(taskTitle, taskDesc, taskState, taskDueDate, taskIsUrgent);
+            saveTaskLocally(newTask);
+            displayTask(newTask);
             
         }
-    /*}*/)
+    })
 }
+submitNewTask()
 
 function editTask(task) {
     let title = task.querySelector(/* to confirm */).textContent; // <=== class list-element-text correspond to ...
-    document.getElementById("name").value = taskText; // <=== ... id input form
+    document.getElementById("name").value = title; // <=== ... id input form
     let desc = task.querySelector(/* to confirm */).textContent;
-    document.getElementById("desc").value = taskText;
+    document.getElementById("desc").value = desc;
     let state = task.querySelector(/* to confirm */).textContent;
-    document.getElementById("pending").value = taskText;
+    document.getElementById("pending").value = state;
     let dueDate = task.querySelector(/* to confirm */).textContent;
-    document.getElementById("dueDate").value = taskText;
+    document.getElementById("dueDate").value = dueDate;
     let isUrgent = task.querySelector(/* to confirm */).textContent;
-    document.getElementById("isUrgent").checked = taskText;
+    document.getElementById("isUrgent").checked = isUrgent;
 
     let btn = document.getElementById('submitBtn');
     btn.setAttribute("value", "Edit task");
@@ -81,13 +83,13 @@ function editTask(task) {
 
 
 function saveTaskLocally(task) {
-    let tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
+    let tasksArray = JSON.parse(localStorage.getItem('Tasks')) || [];
     tasksArray.push(task);
-    localStorage.setItem('tasks', JSON.stringify(tasksArray));
+    localStorage.setItem('Tasks', JSON.stringify(tasksArray));
 }
 
 function loadTasksLocally() {
-    let tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
+    let tasksArray = JSON.parse(localStorage.getItem('Tasks')) || [];
     tasksArray.forEach(task => {
         displayTask(task);
     });
