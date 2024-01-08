@@ -22,6 +22,7 @@ header{
     border-bottom-right-radius: 55px;
 }
 
+// FILTER
 #filter{
     background: #31374C;
     width: 40%;
@@ -37,6 +38,7 @@ header{
     border: none;
 }
 
+// FORM
 form{
     background-color: #293045;
     width: 40%;
@@ -100,4 +102,67 @@ form{
             letter-spacing: 1.5px;
             font-size: 15px;
         }
+}
+
+// MAIN
+main{
+    height: 500px;
+    // background-color: red;
+    margin-top: 1%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    .StoDo{
+        // background-color: green;
+        height: 400px;
+        width: 33%;
+
+        border-top: 3px solid white;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Sdoing{
+        // background-color: green;
+        height: 400px;
+        width: 33%;
+
+        margin-left: 0.4%;
+        margin-right: 0.4%;
+
+        border-top: 3px solid white;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Sdone{
+        // background-color: green;
+        height: 400px;
+        width: 33%;
+
+        border-top: 3px solid white;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    h2{
+        font-size: 30px;
+        letter-spacing: 2px;
+        color: white;
+    }
+
+}
+
+.card{
+    width: 99%;
+    height: 60px;
+    // background-color: aqua;
+    margin-top: 1%;
+
+    margin-left: auto;
+    margin-right: auto;
 }
