@@ -23,33 +23,51 @@
         <option value="done">Done</option>
     </select>
 
-        <form>
-            <div>
-                <input name="name" type="text" id="name" placeholder="Name">
-            </div>
-           
-            <div>
-                <textarea name="description" type="text" id="desc" placeholder="Description"></textarea>
-            </div>
+    <!-- Form -->
+    <form>
+        <div>
+            <input name="name" type="text" id="name" placeholder="Name">
+        </div>
 
-            <div>
-                <label for="pending"></label>
-                <select name="pending" id="pending" class="pending">
-                    <option value="none">-- Choose an option --</option>
-                    <option value="To do">To do</option>
-                    <option value="Doing">Doing</option>
-                    <option value="Done">Done</option>
-                </select>
-            </div>
+        <div>
+            <textarea name="description" type="text" id="desc" placeholder="Description"></textarea>
+        </div>
 
-            <div>
-                <input name="date" type="date" id="date">
-            </div>
+        <div>
+            <label for="pending"></label>
+            <select name="pending" id="pending" class="pending">
+                <option value="none">-- Choose an option --</option>
+                <option value="To do">To do</option>
+                <option value="Doing">Doing</option>
+                <option value="Done">Done</option>
+            </select>
+        </div>
 
-            <div>
-                <button type="submit">+</button>
-            </div>
-        </form>
+        <div>
+            <input name="date" type="date" id="date">
+        </div>
+
+        <div>
+            <button type="submit">+</button>
+        </div>
+    </form>
+
+    <main>
+        <!-- To Do -->
+        <section class="StoDo">
+
+        </section>
+
+        <!-- Doing -->
+        <section class="Sdoing">
+
+        </section>
+
+        <!-- Done -->
+        <section class="Sdone">
+
+        </section>
+    </main>
 
 </body>
 
