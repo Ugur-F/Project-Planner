@@ -1,4 +1,4 @@
-//import { formatDistance, format, subDays, addDays } from 'node_modules/date-fns';
+import * as dateFns from 'https://cdn.jsdelivr.net/npm/date-fns@2.24.0/esm/index.js';
 
 class Tasks {
     constructor(title, description, state, dueDate, isUrgent) {
@@ -19,15 +19,31 @@ class Tasks {
     }
 }
 
-function displayTask(newTask){
-    // Create HTML for task; translate to js
-    console.log(newTask);
+function displayTask(newTask) {
+    let ulTask = document.querySelector(".tasksDoing");
+
+    let task = document.createElement('li');
+    task.classList.add('card');
+
+    task.innerHTML = `
+        <div class="card__icon">
+            <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
+            <button id="btnEdit"><i class="fa-solid fa-highlighter"></i></button>
+            <button id="btnDelete"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+        <p class="card__name">${newTask.title}</p>
+        <p class="card__desc">${newTask.description}</p>
+        <p class="card__timeBox">${newTask.dueDate}</p> 
+        <p class="card__timeBox">${newTask.state}</p>
+    `;
+
+    ulTask.appendChild(task);
+    return task;
 }
 
 let editingTask = null;
 function submitNewTask() {
     let submitBtn = document.getElementById("btnSubmit");
-
 
     submitBtn.addEventListener('click', (event) => {
         event.preventDefault();
@@ -106,19 +122,20 @@ function deleteTask(taskId) {
     }
 }
 
-// function DistanceDueDate() {
-//     let dueDateInput = document.getElementById("dueDate");
-//     let dueDateValue = dueDateInput.value;
-//     let dueDate = new Date(dueDateValue);
-//     let formattedDueDate = format(dueDate, "MM/dd/yyyy");
-//     let timeDifference = formatDistance(new Date(), dueDate, { addSuffix: true });
-//     console.log("Due Date:", formattedDueDate);
-//     console.log("Time Difference:", timeDifference);
-// }
+function DistanceDueDate() {
+    let dueDateInput = document.getElementById("dueDate");
+    let dueDateValue = dueDateInput.value;
+    let dueDate = new Date(dueDateValue);
+    let formattedDueDate = format(dueDate, "MM/dd/yyyy");
+    let timeDifference = formatDistance(new Date(), dueDate, { addSuffix: true });
+    console.log("Due Date:", formattedDueDate);
+    console.log("Time Difference:", timeDifference);
+    return(timeDifference)
+}
 
 function setupStateBtn() {
     /*
-    * get de otpion element
+    * get de otpion element on card task
     * listen de change
     * on change
     * stwitch state, class, display, ...
