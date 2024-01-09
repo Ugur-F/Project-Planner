@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    
     <script type="module" src="./assets/js/script.js" defer></script>
+    <script src="./assets/js/form.js" defer></script>
     <script src="https://kit.fontawesome.com/f0baf4ae6a.js" crossorigin="anonymous"></script>
     <title>My Planner</title>
 </head>
@@ -13,7 +15,10 @@
 <body>
     <header>
         <h1>My Planner</h1>
-
+    </header>
+        
+        <button id="newTaskBtn">Add a new task!</button>
+    
         <!-- Filter -->
         <label for="filter"></label>
         <select name="filter" id="filter" class="bg-mediumPink m-5 rounded-lg px-2 py-1">
@@ -22,9 +27,8 @@
             <option value="doing">Doing</option>
             <option value="done">Done</option>
         </select>
-    </header>
-    <main>
-        <!-- Form -->
+
+        <!-- Form
         <form id="taskForm">
             <div>
                 <input name="name" type="text" id="name" placeholder="Name" minlength="3" maxlength="256" required>
@@ -57,7 +61,7 @@
             <div>
                 <button id="btnSubmit" type="submit">+</button>
             </div>
-        </form>
+        </form> -->
 
         <main>
             <!-- To Do -->
@@ -65,6 +69,36 @@
                 <h2>To Do</h2>
                 <ul class="listContainer-tasksList tasksToDo">
                     <!-- card -->
+                    <div class="card">
+
+                        <div class="card__icon">
+                            <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
+                            <i class="fa-solid fa-highlighter"></i>
+                            <i class="fa-regular fa-trash-can"></i>
+                        </div>
+                    
+                        <p class="card__name">Prepa JS</p>
+                        <p class="card__desc">Terminer l'exo 3 et 4.</p>
+                        <p class="card__timeBox">Created: 08/01/2024</p>
+                        <p class="card__timeBox">Deadline: 17/01/2024</p>
+                    
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card__icon">
+                            <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
+                            <i class="fa-solid fa-highlighter"></i>
+                            <i class="fa-regular fa-trash-can"></i>
+                        </div>
+                    
+                        <p class="card__name">Prepa JS</p>
+                        <p class="card__desc">Terminer l'exo 3 et 4.</p>
+                        <p class="card__timeBox">Created: 08/01/2024</p>
+                        <p class="card__timeBox">Deadline: 17/01/2024</p>
+                    
+                    </div>
                 </ul>
             </section>
 
@@ -73,6 +107,20 @@
                 <h2>Doing</h2>
                 <ul class="listContainer-tasksList tasksDoing">
                     <!-- card -->
+                    <div class="card">
+
+                        <div class="card__icon">
+                            <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
+                            <i class="fa-solid fa-highlighter"></i>
+                            <i class="fa-regular fa-trash-can"></i>
+                        </div>
+                    
+                        <p class="card__name">Prepa JS</p>
+                        <p class="card__desc">Terminer l'exo 3 et 4.</p>
+                        <p class="card__timeBox">Created: 08/01/2024</p>
+                        <p class="card__timeBox">Deadline: 17/01/2024</p>
+                    
+                    </div>
                 </ul>
             </section>
 
@@ -81,6 +129,20 @@
                 <h2>Done</h2>
                 <ul class="listContainer-tasksList tasksDone">
                     <!-- card -->
+                    <div class="card">
+
+                        <div class="card__icon">
+                            <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
+                            <i class="fa-solid fa-highlighter"></i>
+                            <i class="fa-regular fa-trash-can"></i>
+                        </div>
+                    
+                        <p class="card__name">Prepa JS</p>
+                        <p class="card__desc">Terminer l'exo 3 et 4.</p>
+                        <p class="card__timeBox">Created: 08/01/2024</p>
+                        <p class="card__timeBox">Deadline: 17/01/2024</p>
+                    
+                    </div>
                 </ul>
             </section>
         </main>
