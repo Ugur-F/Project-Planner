@@ -32,6 +32,9 @@ body {
     // text-align: center;
     height: auto;
     padding-bottom: 1%;
+
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -44,6 +47,25 @@ header {
 
     border-bottom-left-radius: 55px;
     border-bottom-right-radius: 55px;
+}
+
+// BUTTON FORM
+#newTaskBtn{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+
+    font-size: 16px;
+    font-family: 'Kanit';
+    color: #31374C;
+    letter-spacing: 5px;
+    font-size: 18px;
+    font-weight: bold;
+
+    border-radius: 5px;
+    border: none;
+
 }
 
 // FILTER
@@ -116,7 +138,7 @@ form {
         font-size: 15px;
     }
 
-    #date {
+    #dueDate {
         background-color: #3F4558;
         border: none;
         width: 98.5%;
@@ -175,6 +197,10 @@ main {
     display: flex;
     // text-align: center;
     justify-content: center;
+
+    ul{
+        margin-right: 10%;
+    }
 
     .StoDo {
         // background-color: green;
@@ -239,14 +265,12 @@ main {
     margin-right: auto;
 
     &__icon {
-        margin-left: 88%;
+        margin-left: 85.5%;
         padding-top: 1%;
         padding-right: 1%;
         text-align: end;
         display: inline-block;
         border-bottom: 2px solid white;
-
-
     }
 
     &__name {
