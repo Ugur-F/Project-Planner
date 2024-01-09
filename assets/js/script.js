@@ -8,7 +8,7 @@ class Tasks {
         this.description = description;
         this.state = state;
         this.dueDate = dueDate;
-        this.isUrgent = false;
+        this.isUrgent = isUrgent;
     }
 
     getTheID() {
