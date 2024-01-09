@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script defer src="assets/js/script.js"></script>
+    <script type="text/javascript" src="./assets/js/script.js" defer></script>
     <script src="https://kit.fontawesome.com/f0baf4ae6a.js" crossorigin="anonymous"></script>
     <title>My Planner</title>
 </head>
@@ -24,48 +24,66 @@
         </select>
     </header>
     <main>
-        <div class="formContainer">
-            <form>
-                <div>
-                    <input name="name" type="text" id="name" placeholder="Name" minlength="3" maxlength="256" required>
-                </div>
-               
-                <div>
-                    <textarea name="description" type="text" id="desc" placeholder="Description" minlength="5" maxlength="1024"></textarea>
-                </div>
-    
-                <div>
-                    <label for="pending"></label>
-                    <select name="pending" id="pending" class="pending">
-                        <option value="none">-- Choose an option --</option>
-                        <option value="To do">To do</option>
-                        <option value="Doing">Doing</option>
-                        <option value="Done">Done</option>
-                    </select>
-                </div>
-    
-                <div>
-                    <input name="date" type="date" id="date">
-                </div>
-    
-                <div>
-                    <button type="submit" id="submitBtn">+</button>
-                </div>
-            </form>
-        </div>
-        <div class="listContainer">
+        <!-- Form -->
+        <form id="taskForm">
+            <div>
+                <input name="name" type="text" id="name" placeholder="Name" minlength="3" maxlength="256" required>
+            </div>
 
-            <ul class="listContainer-tasksList tasksToDo">               
-            </ul>
+            <div>
+                <textarea name="description" type="text" id="desc" placeholder="Description" minlength="5"
+                maxlength="1024"></textarea>
+            </div>
 
-            <ul class="listContainer-tasksList tasksDoing">
-            </ul>
+            <div>
+                <label for="pending"></label>
+                <select name="pending" id="pending" class="pending">
+                    <option value="none">-- Choose an option --</option>
+                    <option value="To do" selected>To do</option>
+                    <option value="Doing">Doing</option>
+                    <option value="Done">Done</option>
+                </select>
+            </div>
 
-            <ul class="listContainer-tasksList tasksDone">
-            </ul>
+            <div>
+                <input name="date" type="date" id="dueDate">
+            </div>
 
-        </div>
-    </main>
+            <div class="isUrgentForm">
+                <label for="urgentCheckbox">Urgent :</label>
+                <input type="checkbox" id="isUrgent" name="urgentCheckbox">
+            </div>
+
+            <div>
+                <button id="btnSubmit" type="submit">+</button>
+            </div>
+        </form>
+
+        <main>
+            <!-- To Do -->
+            <section class="StoDo">
+                <h2>To Do</h2>
+                <ul class="listContainer-tasksList tasksToDo">
+                    <!-- card -->
+                </ul>
+            </section>
+
+            <!-- Doing -->
+            <section class="Sdoing">
+                <h2>Doing</h2>
+                <ul class="listContainer-tasksList tasksDoing">
+                    <!-- card -->
+                </ul>
+            </section>
+
+            <!-- Done -->
+            <section class="Sdone">
+                <h2>Done</h2>
+                <ul class="listContainer-tasksList tasksDone">
+                    <!-- card -->
+                </ul>
+            </section>
+        </main>
 
 </body>
 
