@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     
-    <script type="module" src="./assets/js/script.js" defer></script>
-    <script src="./assets/js/form.js" defer></script>
+    <!-- <script type="module" src="./assets/js/script.js" defer></script> -->
+    
     <script src="https://kit.fontawesome.com/f0baf4ae6a.js" crossorigin="anonymous"></script>
     <title>My Planner</title>
 </head>
@@ -17,7 +17,9 @@
         <h1>My Planner</h1>
     </header>
         
-        <button id="newTaskBtn">Add a new task!</button>
+        <button id="newTaskBtn">
+            Add a new task!
+        </button>
     
         <!-- Filter -->
         <label for="filter"></label>
@@ -28,40 +30,8 @@
             <option value="done">Done</option>
         </select>
 
-        <!-- Form
-        <form id="taskForm">
-            <div>
-                <input name="name" type="text" id="name" placeholder="Name" minlength="3" maxlength="256" required>
-            </div>
-
-            <div>
-                <textarea name="description" type="text" id="desc" placeholder="Description" minlength="5"
-                maxlength="1024"></textarea>
-            </div>
-
-            <div>
-                <label for="pending"></label>
-                <select name="pending" id="pending" class="pending">
-                    <option value="none">-- Choose an option --</option>
-                    <option value="To do" selected>To do</option>
-                    <option value="Doing">Doing</option>
-                    <option value="Done">Done</option>
-                </select>
-            </div>
-
-            <div>
-                <input name="date" type="date" id="dueDate">
-            </div>
-
-            <div class="isUrgentForm">
-                <label for="urgentCheckbox">Urgent :</label>
-                <input type="checkbox" id="isUrgent" name="urgentCheckbox">
-            </div>
-
-            <div>
-                <button id="btnSubmit" type="submit">+</button>
-            </div>
-        </form> -->
+        <div class="divTaskForm"> <!-- FORM --> </div>
+        
 
         <main>
             <!-- To Do -->
@@ -69,36 +39,6 @@
                 <h2>To Do</h2>
                 <ul class="listContainer-tasksList tasksToDo">
                     <!-- card -->
-                    <div class="card">
-
-                        <div class="card__icon">
-                            <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
-                            <i class="fa-solid fa-highlighter"></i>
-                            <i class="fa-regular fa-trash-can"></i>
-                        </div>
-                    
-                        <p class="card__name">Prepa JS</p>
-                        <p class="card__desc">Terminer l'exo 3 et 4.</p>
-                        <p class="card__timeBox">Created: 08/01/2024</p>
-                        <p class="card__timeBox">Deadline: 17/01/2024</p>
-                    
-                    </div>
-
-
-                    <div class="card">
-
-                        <div class="card__icon">
-                            <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
-                            <i class="fa-solid fa-highlighter"></i>
-                            <i class="fa-regular fa-trash-can"></i>
-                        </div>
-                    
-                        <p class="card__name">Prepa JS</p>
-                        <p class="card__desc">Terminer l'exo 3 et 4.</p>
-                        <p class="card__timeBox">Created: 08/01/2024</p>
-                        <p class="card__timeBox">Deadline: 17/01/2024</p>
-                    
-                    </div>
                 </ul>
             </section>
 
@@ -107,20 +47,6 @@
                 <h2>Doing</h2>
                 <ul class="listContainer-tasksList tasksDoing">
                     <!-- card -->
-                    <div class="card">
-
-                        <div class="card__icon">
-                            <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
-                            <i class="fa-solid fa-highlighter"></i>
-                            <i class="fa-regular fa-trash-can"></i>
-                        </div>
-                    
-                        <p class="card__name">Prepa JS</p>
-                        <p class="card__desc">Terminer l'exo 3 et 4.</p>
-                        <p class="card__timeBox">Created: 08/01/2024</p>
-                        <p class="card__timeBox">Deadline: 17/01/2024</p>
-                    
-                    </div>
                 </ul>
             </section>
 
@@ -129,24 +55,11 @@
                 <h2>Done</h2>
                 <ul class="listContainer-tasksList tasksDone">
                     <!-- card -->
-                    <div class="card">
-
-                        <div class="card__icon">
-                            <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
-                            <i class="fa-solid fa-highlighter"></i>
-                            <i class="fa-regular fa-trash-can"></i>
-                        </div>
-                    
-                        <p class="card__name">Prepa JS</p>
-                        <p class="card__desc">Terminer l'exo 3 et 4.</p>
-                        <p class="card__timeBox">Created: 08/01/2024</p>
-                        <p class="card__timeBox">Deadline: 17/01/2024</p>
-                    
-                    </div>
                 </ul>
             </section>
         </main>
 
+    <script src="./assets/js/form.js" defer></script>
 </body>
 
 </html>
