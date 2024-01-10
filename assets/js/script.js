@@ -27,41 +27,71 @@ function displayTask(newTask) {
     let task = document.createElement('li');
     task.id = 'task_' + newTask.id
     task.classList.add('card');
+    let cardIcon = document.createElement('div');
+    cardIcon.classList.add('card__icon');
 
-    task.innerHTML = `
-        <div class="card__icon">
-            <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
-            <button id="btnEdit"><i class="fa-solid fa-highlighter"></i></button>
-            <button id="btnDelete"><i class="fa-regular fa-trash-can"></i></button>
-        </div>
-        <p class="card__name">${newTask.title}</p>
-        <p class="card__desc">${newTask.description}</p>
-        <p class="card__timeBox">${newTask.dueDate}</p> 
-        <p class="card__pending">${newTask.state}</p> 
-    `;
+    let urgentIcon = document.createElement("i")
+    urgentIcon.classList.add("fa-solid", "fa-triangle-exclamation")
+    urgentIcon.style.color = "#ffffff";
+    if (newTask.isUrgent === true) {
+        cardIcon.appendChild(urgentIcon)
+    } else {
+        cardIcon.remove(urgentIcon)
+    }
+
+    let editButton = document.createElement('button');
+    editButton.classList.add('btnEdit');
+    let editIcon = document.createElement('i');
+    editIcon.classList.add('fa-solid', 'fa-highlighter');
+    editButton.appendChild(editIcon);
+
+    let deleteButton = document.createElement('button');
+    deleteButton.classList.add('btnDelete');
+    let deleteIcon = document.createElement('i');
+    deleteIcon.classList.add('fa-regular', 'fa-trash-can');
+    deleteButton.appendChild(deleteIcon);
+
+    cardIcon.appendChild(editButton);
+    cardIcon.appendChild(deleteButton);
+
+    let cardName = document.createElement('p');
+    cardName.classList.add('card__name');
+    cardName.appendChild(document.createTextNode(newTask.title));
+
+    let cardDesc = document.createElement('p');
+    cardDesc.classList.add('card__desc');
+    cardDesc.appendChild(document.createTextNode(newTask.description));
+
+    let cardTimeBox = document.createElement('p');
+    cardTimeBox.classList.add('card__timeBox');
+    cardTimeBox.appendChild(document.createTextNode(newTask.dueDate));
+
+    let cardPending = document.createElement('p');
+    cardPending.classList.add('card__pending');
+    cardPending.appendChild(document.createTextNode(newTask.state));
+
+    // Append elements
+
+    task.appendChild(cardIcon);
+    task.appendChild(cardName);
+    task.appendChild(cardDesc);
+    task.appendChild(cardTimeBox);
+    task.appendChild(cardPending);
+
     switch (newTask.state) {
         case "To Do":
             ulToDo.appendChild(task)
             break;
         case "Doing":
             ulDoing.appendChild(task)
-            break; 
+            break;
         case "Done":
             ulDone.appendChild(task)
-            break;   
+            break;
         default:
             ulToDo.appendChild(task)
             break;
     }
-    // ulTask.appendChild(newTask.state);
-    // let btnEdit = task.querySelector('#btnEdit');
-    // let btnDelete = task.querySelector('#btnDelete');
-    // if (btnEdit && btnDelete) {
-    //     console.log("Boutons correctement définis dans la carte.");
-    // } else {
-    //     console.log("Erreur: Boutons non définis correctement dans la carte.");
-    // }   
-    // return task;
 }
 
 let editingTask = null;
@@ -92,7 +122,7 @@ function submitNewTask() {
                 localStorage.setItem('Tasks', JSON.stringify(tasksArray));
             }
 
-            editingTask = null;
+            //editingTask = null;
             location.reload();
         } else {
             let newTask = new Tasks(taskTitle, taskDesc, taskState, taskDueDate, taskIsUrgent);
@@ -111,18 +141,7 @@ function editTask(task) {
     document.getElementById("desc").value = desc;
 
     console.log("task id = " + task.id);
-    let state = task.querySelector(`#pending_${task.id.split('_')[1]}`).textContent;
-
-    let selects = document.getElementById("pending");
-
-    for(let select of selects){
-
-        if(select.textContent === state){
-            console.log(select);
-            select.selected = true
-        }
-        
-    }
+    let state = task.querySelector(".card__pending").textContent;
     document.getElementById("pending").value = state;
 
     let dueDate = task.querySelector('.card__timeBox').textContent;
@@ -134,7 +153,7 @@ function editTask(task) {
     document.getElementById("isUrgent").checked = isUrgent;
 
     let btn = document.getElementById('btnSubmit');
-    btn.setAttribute("value", "Edit task");
+    btn.textContent = "Edit task";
 
     editingTask = task;
 }
@@ -178,7 +197,7 @@ function deleteTask(taskId) {
 
 
 function setupEditBtn() {
-    let editTaskButtons = document.querySelectorAll('#btnEdit');
+    let editTaskButtons = document.querySelectorAll('.btnEdit');
     editTaskButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             console.log("Setting up Edit button");
@@ -192,7 +211,7 @@ function setupEditBtn() {
 
 function setupDeleteBtn() {
     console.log("Setting up delete fct");
-    let deleteTasksBtn = document.querySelectorAll('#btnDelete');
+    let deleteTasksBtn = document.querySelectorAll('.btnDelete');
     deleteTasksBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             console.log("Setting up delete btn");
