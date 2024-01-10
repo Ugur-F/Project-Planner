@@ -4,18 +4,15 @@
 // code HTML d'une card
 
 <div class="card">
-
     <div class="card__icon">
         <i class="fa-solid fa-triangle-exclamation" style="color: #ffffff;"></i>
         <i class="fa-solid fa-highlighter"></i>
         <i class="fa-regular fa-trash-can"></i>
     </div>
-
     <p class="card__name">Prepa JS</p>
     <p class="card__desc">Terminer l'exo 3 et 4.</p>
     <p class="card__timeBox">Created: 08/01/2024</p>
     <p class="card__timeBox">Deadline: 17/01/2024</p>
-
 </div>
 */
 * {
@@ -48,6 +45,7 @@ header {
   margin-left: auto;
   margin-right: auto;
   margin-top: 2%;
+  background-color: white;
   font-size: 16px;
   font-family: "Kanit";
   color: #31374C;
@@ -55,7 +53,15 @@ header {
   font-size: 18px;
   font-weight: bold;
   border-radius: 5px;
-  border: none;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+#newTaskBtn:hover {
+  background-color: #141B33;
+  color: white;
+  border: 1px solid white;
+  transform: scale(1.1);
 }
 
 #filter {
@@ -72,16 +78,58 @@ header {
   margin-left: 30%;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(3, 21, 33, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+.divTaskForm {
+  width: 100%;
+  background-color: rgb(203, 44, 44);
+  position: absolute;
+  text-align: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  z-index: 102;
+}
+
 form {
   background-color: #293045;
-  width: 40%;
+  width: auto;
   text-align: start;
   border: 10px solid black;
   border-radius: 20px;
-  margin-top: 0.5%;
+  z-index: 103;
+  width: 40%;
   margin-right: auto;
   margin-left: auto;
   border: 10px solid #293045;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+form #fCloseBtn {
+  border-radius: 50%;
+  border: none;
+  margin-bottom: 1%;
+  top: 50%;
+  right: 90%;
+  transform: translate(-10%, -50%);
+  font-weight: bold;
+  margin-left: 96%;
+}
+form #fCloseBtn:hover {
+  background-color: #141B33;
+  color: white;
 }
 form #name {
   background-color: #3F4558;
@@ -164,7 +212,7 @@ main {
   justify-content: center;
 }
 main ul {
-  margin-right: 10%;
+  margin-right: 8%;
 }
 main .StoDo {
   height: auto;
@@ -201,12 +249,14 @@ main h2 {
   margin: 0;
   background-color: #293045;
   margin-top: 5%;
+  margin-bottom: 2%;
   color: white;
   border-top-left-radius: 15px;
   border-bottom-right-radius: 20px;
   border: 1px solid #3F4558;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.79);
 }
 .card__icon {
   margin-left: 85.5%;

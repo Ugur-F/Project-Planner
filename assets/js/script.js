@@ -1,5 +1,68 @@
 import * as dateFns from 'https://cdn.jsdelivr.net/npm/date-fns@2.24.0/esm/index.js';
 
+let newTaskBtn = document.getElementById('newTaskBtn');
+let divTaskForm = document.querySelector('header');
+
+function formulaire() {
+    var htmlContent = `
+    <div class="overlay"></div>
+            <form id="taskForm">
+                <div>
+                    <button id="fCloseBtn">X</button>
+                </div>
+                <div>
+                    <input name="name" type="text" id="name" placeholder="Name" minlength="3" maxlength="256" required>
+                </div>
+
+                <div>
+                    <textarea name="description" type="text" id="desc" placeholder="Description" minlength="5"
+                    maxlength="1024"></textarea>
+                </div>
+
+                <div>
+                    <label for="pending"></label>
+                    <select name="pending" id="pending" class="pending">
+                        <option value="none">-- Choose an option --</option>
+                        <option value="To do" selected>To do</option>
+                        <option value="Doing">Doing</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </div>
+
+                <div>
+                    <input name="date" type="date" id="dueDate">
+                </div>
+
+                <div class="isUrgentForm">
+                    <label for="urgentCheckbox">Urgent :</label>
+                    <input type="checkbox" id="isUrgent" name="urgentCheckbox">
+                </div>
+
+                <div>
+                    <button id="btnSubmit" type="submit">+</button>
+                </div>
+            </form>
+       
+    `;
+
+    divTaskForm.innerHTML = htmlContent;
+    submitNewTask();
+    closeFormulaire();
+    return htmlContent;
+}
+newTaskBtn.addEventListener('click', formulaire);
+
+function closeFormulaire() {
+    var fCloseBtn = document.getElementById('fCloseBtn');
+    if (fCloseBtn) {
+        fCloseBtn.addEventListener('click', function () {
+            divTaskForm.innerHTML = '<h1>My Planner</h1>'; // Effacer le contenu du conteneur (on replace juste le titre)
+        });
+    }
+}
+
+
+// Mon fichier d'origine
 class Tasks {
     constructor(title, description, state, dueDate, isUrgent) {
         this.id = this.getTheID();
@@ -96,7 +159,8 @@ function displayTask(newTask) {
 
 let editingTask = null;
 function submitNewTask() {
-    let submitBtn = document.getElementById("btnSubmit");
+    let form = document.getElementById("taskForm");
+    let submitBtn = form.querySelector("#btnSubmit");
 
     submitBtn.addEventListener('click', (event) => {
         event.preventDefault();
@@ -129,30 +193,33 @@ function submitNewTask() {
             saveTaskLocally(newTask);
             displayTask(newTask);
         }
+        closeFormulaire();
     })
 }
-submitNewTask()
+
 
 function editTask(task) {
+    formulaire();
+    let form = document.getElementById("taskForm");
     let title = task.querySelector('.card__name').textContent;
-    document.getElementById("name").value = title;
+    form.querySelector("#name").value = title;
 
     let desc = task.querySelector('.card__desc').textContent;
-    document.getElementById("desc").value = desc;
+    form.querySelector("#desc").value = desc;
 
     console.log("task id = " + task.id);
     let state = task.querySelector(".card__pending").textContent;
-    document.getElementById("pending").value = state;
+    form.querySelector("#pending").value = state;
 
     let dueDate = task.querySelector('.card__timeBox').textContent;
     console.log(dueDate);
-    document.getElementById("dueDate").value = dueDate;
+    form.querySelector("#dueDate").value = dueDate;
 
     let isUrgentElement = task.querySelector('.fa-triangle-exclamation');
     let isUrgent = isUrgentElement ? true : false;
-    document.getElementById("isUrgent").checked = isUrgent;
+    form.querySelector("#isUrgent").checked = isUrgent;
 
-    let btn = document.getElementById('btnSubmit');
+    let btn = form.querySelector('#btnSubmit');
     btn.textContent = "Edit task";
 
     editingTask = task;
@@ -200,6 +267,7 @@ function setupEditBtn() {
     let editTaskButtons = document.querySelectorAll('.btnEdit');
     editTaskButtons.forEach(btn => {
         btn.addEventListener('click', () => {
+            formulaire();
             console.log("Setting up Edit button");
             let taskId = btn.parentNode.parentNode.id.split('_')[1];
             let taskElement = document.getElementById('task_' + taskId);
