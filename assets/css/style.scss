@@ -44,6 +44,12 @@ header {
 
     border-bottom-left-radius: 55px;
     border-bottom-right-radius: 55px;
+
+    h1{
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    
 }
 
 // BUTTON FORM
@@ -51,7 +57,7 @@ header {
     width: 40%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2%;
+    margin-top: 4%;
 
     background-color: white;
     font-size: 16px;
@@ -79,7 +85,7 @@ header {
     background: #31374C;
     width: 40%;
 
-    margin-top: 2%;
+    margin-top: 5%;
     font-size: 16px;
     font-family: 'Kanit';
     color: white;
