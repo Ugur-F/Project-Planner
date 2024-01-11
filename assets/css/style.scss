@@ -29,6 +29,9 @@ body {
     // text-align: center;
     height: auto;
     padding-bottom: 1%;
+
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -41,6 +44,40 @@ header {
 
     border-bottom-left-radius: 55px;
     border-bottom-right-radius: 55px;
+
+    h1{
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    
+}
+
+// BUTTON FORM
+#newTaskBtn{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+
+    background-color: white;
+    font-size: 16px;
+    font-family: 'Kanit';
+    color: #31374C;
+    letter-spacing: 5px;
+    font-size: 18px;
+    font-weight: bold;
+
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    transition: transform 0.3s ease;
+}
+
+#newTaskBtn:hover{
+  background-color: #141B33;
+  color: white;
+  border: 1px solid white;
+  transform: scale(1.1);
 }
 
 // FILTER
@@ -48,7 +85,7 @@ header {
     background: #31374C;
     width: 40%;
 
-    margin-top: 2%;
+    margin-top: 5%;
     font-size: 16px;
     font-family: 'Kanit';
     color: white;
@@ -61,19 +98,68 @@ header {
     margin-left: 30%;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(3, 21, 33, 0.1);
+    backdrop-filter: blur(10px);
+    // z-index: 100;
+}
+
 // FORM
+.divTaskForm{
+    width: 100%;
+    background-color: rgb(203, 44, 44);
+    // margin-left: 30%;
+    // margin-top: 10%;
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+
+    z-index: 102;
+}
+
 form {
     background-color: #293045;
-    width: 40%;
+    width: auto;
     text-align: start;
     border: 10px solid black;
     border-radius: 20px;
+    z-index: 103;
+    width: 40%;
 
-    margin-top: 0.5%;
     margin-right: auto;
     margin-left: auto;
 
     border: 10px solid #293045;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    #fCloseBtn{
+        border-radius: 50%;
+        border: none;
+        margin-bottom: 1%;
+        top: 50%;
+        right: 90%;
+        transform: translate(-10%, -50%);
+        font-weight: bold;
+        margin-left: 96%;
+    }
+
+    #fCloseBtn:hover{
+        background-color: #141B33;
+        color: white;
+    }
 
     #name {
         background-color: #3F4558;
@@ -113,7 +199,7 @@ form {
         font-size: 15px;
     }
 
-    #date {
+    #dueDate {
         background-color: #3F4558;
         border: none;
         width: 98.5%;
@@ -170,11 +256,13 @@ main {
     // background-color: red;
     margin-top: 1%;
     display: flex;
-    // text-align: center;
     justify-content: center;
 
+    ul{
+        margin-right: 8%;
+    }
+
     .StoDo {
-        // background-color: green;
         height: auto;
         width: 33%;
 
@@ -185,7 +273,6 @@ main {
     }
 
     .Sdoing {
-        // background-color: green;
         height: auto;
         width: 33%;
 
@@ -199,7 +286,6 @@ main {
     }
 
     .Sdone {
-        // background-color: green;
         height: auto;
         width: 33%;
 
@@ -225,6 +311,7 @@ main {
 
     background-color: #293045;
     margin-top: 5%;
+    margin-bottom: 2%;
     color: white;
 
     border-top-left-radius: 15px;
@@ -235,36 +322,50 @@ main {
     margin-left: auto;
     margin-right: auto;
 
+    box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.79);
+
     &__icon {
-        margin-left: 88%;
+        margin-left: 81.5%;
         padding-top: 1%;
-        padding-right: 1%;
+        // padding-right: 1%;
         text-align: end;
         display: inline-block;
         border-bottom: 2px solid white;
-
-
     }
 
     &__name {
         font-size: 22px;
         font-weight: bold;
         letter-spacing: 1px;
-        margin-top: 1%;
+        margin-top: 5%;
         padding-left: 3%;
+        background-color: #3F4558;
     }
 
     &__desc {
         font-size: 18px;
         font-family: 'Kanit';
         padding-left: 3%;
+        
+        background-color: #3F4558;
     }
 
     &__timeBox {
         display: inline-block;
-        margin-left: 15%;
-        margin-top: 4%;
+        // margin-left: 1%;
+        padding-left: 3%;
+        margin-top: 2%;
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+
+    &__pending {
+        // margin-left: 1%;
+        padding-left: 3%;
         font-size: 16px;
         letter-spacing: 1px;
     }
 }
+
+
+
