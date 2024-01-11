@@ -1,5 +1,4 @@
-import * as dateFns from 'https://cdn.jsdelivr.net/npm/date-fns@2.24.0/esm/index.js';
-
+import { add, parse, differenceInDays } from 'https://cdn.jsdelivr.net/npm/date-fns@2.24.0/esm/index.js';
 let newTaskBtn = document.getElementById('newTaskBtn');
 let divTaskForm = document.querySelector('header');
 
@@ -128,6 +127,7 @@ function displayTask(newTask) {
     let cardTimeBox = document.createElement('p');
     cardTimeBox.classList.add('card__timeBox');
     cardTimeBox.appendChild(document.createTextNode(newTask.dueDate));
+    // cardTimeBox.appendChild(document.createTextNode(DistanceDueDate(newTask)));
 
     let cardPending = document.createElement('p');
     cardPending.classList.add('card__pending');
@@ -212,6 +212,7 @@ function editTask(task) {
     form.querySelector("#pending").value = state;
 
     let dueDate = task.querySelector('.card__timeBox').textContent;
+    // let dueDate = Tasks.task.dueDate
     console.log(dueDate);
     form.querySelector("#dueDate").value = dueDate;
 
@@ -251,15 +252,24 @@ function deleteTask(taskId) {
     }
 }
 
-// function DistanceDueDate() {
-//     let dueDateInput = document.getElementById("dueDate");
-//     let dueDateValue = dueDateInput.value;
-//     let dueDate = new Date(dueDateValue);
-//     let formattedDueDate = format(dueDate, "MM/dd/yyyy");
-//     let timeDifference = formatDistance(new Date(), dueDate, { addSuffix: true });
-//     console.log("Due Date:", formattedDueDate);
-//     console.log("Time Difference:", timeDifference);
-//     return (timeDifference)
+// function DistanceDueDate(task) {
+//     let dueDateStr = task.dueDate;
+//     let today = new Date();
+    
+//     let dueDate = parse(dueDateStr, "yyyy-MM-dd", new Date());
+//     let daysDifference = differenceInDays(dueDate, today);
+//     return(daysDifference)
+// }
+
+// function DueDateFromDistance(distanceDueDate) {
+//     let distanceArray = distanceDueDate.split(' '); 
+//     let distanceValue = parseInt(distanceArray[0]);
+
+//     // Obtenir la date actuelle et soustraire le nombre d'heures spécifié
+//     let now = new Date();
+//     let dueDate = add(now, { days: +distanceValue });
+
+//     return dueDate;
 // }
 
 
